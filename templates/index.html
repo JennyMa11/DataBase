@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2>菜品列表</h2>
+        <form method="GET" class="d-flex">
+            <input class="form-control me-2" type="search" name="search" placeholder="搜索菜品..." value="{{ search }}">
+            <button class="btn btn-outline-success" type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    {% for food in foods %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ food.name }}</h5>
+                <p class="card-text">{{ food.description or '暂无描述' }}</p>
+                <p class="card-text"><strong>价格: ¥{{ "%.2f"|format(food.price) }}</strong></p>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('add_to_cart', food_id=food.food_id) }}" class="btn btn-primary">添加到购物车</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary">登录后购买</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not foods %}
+    <div class="text-center">
+        <p>没有找到相关菜品。</p>
+    </div>
+{% endif %}
+{% endblock %}

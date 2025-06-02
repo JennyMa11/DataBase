@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}用户注册 - 美味快餐店{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card">
+            <div class="card-header text-center bg-success text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-person-plus"></i> 用户注册
+                </h4>
+                <p class="mb-0 mt-2">加入美味快餐店大家庭</p>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">
+                            <i class="bi bi-person"></i> 用户名
+                        </label>
+                        <input type="text" class="form-control" id="username" name="username" 
+                               required placeholder="请输入用户名（3-20个字符）">
+                        <div class="form-text">用户名将作为您的登录标识</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            <i class="bi bi-lock"></i> 密码
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" 
+                               required placeholder="请输入密码（至少6位）">
+                        <div class="form-text">密码长度至少6位，建议包含字母和数字</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="phone_number" class="form-label">
+                            <i class="bi bi-phone"></i> 手机号码
+                        </label>
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" 
+                               required placeholder="请输入您的手机号码">
+                        <div class="form-text">用于接收订单通知和配送信息</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success btn-lg w-100 mb-3">
+                        <i class="bi bi-person-plus"></i> 立即注册
+                    </button>
+                </form>
+                
+                <div class="text-center">
+                    <p class="text-muted mb-0">已有账户？</p>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-box-arrow-in-right"></i> 立即登录
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 注册优势 -->
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h6 class="card-title">
+                    <i class="bi bi-gift-fill text-warning"></i> 注册即享特权
+                </h6>
+                <div class="row">
+                    <div class="col-4">
+                        <i class="bi bi-percent text-success" style="font-size: 2rem;"></i>
+                        <p class="small mt-2">专享优惠</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="bi bi-bell-fill text-info" style="font-size: 2rem;"></i>
+                        <p class="small mt-2">订单提醒</p>
+                    </div>
+                    <div class="col-4">
+                        <i class="bi bi-clock-history text-primary" style="font-size: 2rem;"></i>
+                        <p class="small mt-2">历史记录</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 服务承诺 -->
+        <div class="alert alert-info mt-3">
+            <i class="bi bi-shield-check me-2"></i>
+            <strong>隐私保护承诺：</strong>我们严格保护您的个人信息，仅用于订单处理和服务改进。
+        </div>
+    </div>
+</div>
+{% endblock %}
