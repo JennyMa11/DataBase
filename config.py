@@ -3,7 +3,7 @@ from sqlalchemy.engine import URL
 
 
 class Config:
-
+    SECRET_KEY = 'your-secret-key-change-this-in-production'
     # 直接使用字典构建数据库URL，避免字符串拼接问题
     DATABASE_URL = URL.create(
         drivername="mysql+pymysql",
